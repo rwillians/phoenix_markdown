@@ -20,7 +20,6 @@ defmodule PhoenixMarkdown.Mixfile do
           "Blog Post" => @blog_post
         }
       ],
-
       name: "phoenix_markdown",
       source_url: @github,
       docs: docs(),
@@ -38,7 +37,8 @@ defmodule PhoenixMarkdown.Mixfile do
     [
       {:phoenix, ">= 1.1.0"},
       {:phoenix_html, ">= 2.3.0"},
-      {:earmark, "~> 1.2"},         # Markdown interpreter
+      # ↓ Markdown interpreter
+      {:earmark, "~> 1.2"},
       {:html_entities, "~> 0.4"},
 
       # Docs dependencies
@@ -55,5 +55,4 @@ defmodule PhoenixMarkdown.Mixfile do
       main: "PhoenixMarkdown"
     ]
   end
-
 end
