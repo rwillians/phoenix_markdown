@@ -1,6 +1,6 @@
 defmodule PhoenixMarkdown.Engine do
   @moduledoc """
-  a single public function (compile) that Phoenix uses to compile incoming templates. You should not need to call it yourself. 
+  a single public function (compile) that Phoenix uses to compile incoming templates. You should not need to call it yourself.
   """
 
   @behaviour Phoenix.Template.Engine
@@ -17,7 +17,7 @@ defmodule PhoenixMarkdown.Engine do
   ### Parameters
     * `path` path to the template being compiled
     * `name` name of the template being compiled
-    
+
   """
   def compile(path, name) do
     # get the earmark options from config and cast into the right struct
@@ -79,7 +79,7 @@ defmodule PhoenixMarkdown.Engine do
 
   # sadly there is no is_regex guard...
   defp only?(regex, path, _) do
-    if Regex.regex?(regex) do
+    if regex?(regex) do
       String.match?(path, regex)
     else
       raise ArgumentError,
@@ -103,11 +103,15 @@ defmodule PhoenixMarkdown.Engine do
 
   # sadly there is no is_regex guard...
   defp except?(regex, path, _) do
-    if Regex.regex?(regex) do
+    if regex?(regex) do
       !String.match?(path, regex)
     else
       raise ArgumentError,
             "Invalid parameter to PhoenixMarkdown except: configuration #{inspect(regex)}"
     end
+  end
+
+  defp regex?(maybe_regex) do
+    is_struct(maybe_regex, Regex)
   end
 end
