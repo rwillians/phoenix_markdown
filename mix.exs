@@ -38,7 +38,7 @@ defmodule PhoenixMarkdown.Mixfile do
       {:phoenix, ">= 1.1.0"},
       {:phoenix_html, ">= 2.3.0"},
       # ↓ Markdown interpreter
-      {:earmark, "~> 1.2"},
+      {:earmark, github: "pragdave/earmark", ref: "df44cab"},
       {:html_entities, "~> 0.4"},
 
       # Docs dependencies
